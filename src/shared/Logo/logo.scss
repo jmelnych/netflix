@@ -1,0 +1,9 @@
+@import "../../scss/variables";
+
+.logo {
+  color: $brand;
+  font-size: 1.2em;
+  span {
+    font-weight: 700;
+  }
+}

@@ -1,0 +1,90 @@
+export const genres: string[] = ['comedy', 'documentary', 'horror', 'crime'];
+export const sortOptions: string[] = ['Release date', 'Name', 'Rating'];
+export const movies: any[] = [
+  {
+    id: 1,
+    title: 'Rudolph the Red-Nosed Reindeer: The Movie',
+    release: 2012,
+    cover: '/assets/coming_soon.png',
+    genres: [
+      'Documentary',
+    ],
+  },
+  {
+    id: 2,
+    title: 'Citizen, The',
+    release: 2003,
+    cover: '/assets/coming_soon.png',
+    genres: ['Comedy'],
+  },
+  {
+    id: 3,
+    title: 'Ring Two, The',
+    release: 2002,
+    cover: '/assets/coming_soon.png',
+    genres: ['Documentary', 'Comedy'],
+  },
+  {
+    id: 4,
+    title: 'Torque',
+    release: 1992,
+    cover: '/assets/coming_soon.png',
+    genres: ['Horror'],
+  },
+  {
+    id: 5,
+    title: 'D.C. Cab',
+    release: 2007,
+    cover: '/assets/coming_soon.png',
+    genres: ['Crime'],
+  },
+  {
+    id: 6,
+    title: 'Women, The',
+    release: 1999,
+    cover: '/assets/coming_soon.png',
+    genres: ['Documentary', 'Comedy'],
+  },
+  {
+    id: 7,
+    title: 'Destroy All Monsters (Kaijû sôshingeki)',
+    release: 2005,
+    cover: '/assets/coming_soon.png',
+    genres: ['Horror', 'Comedy'],
+  },
+  {
+    id: 8,
+    title: 'Piter FM',
+    release: 2004,
+    cover: '/assets/coming_soon.png',
+    genres: ['Crime'],
+  },
+  {
+    id: 9,
+    title: 'Defenders of Riga',
+    release: 1992,
+    cover: '/assets/coming_soon.png',
+    genres: ['Comedy'],
+  },
+  {
+    id: 10,
+    title: 'Israeli Intelligence (Hamosad Hasagur)',
+    release: 2004,
+    cover: '/assets/coming_soon.png',
+    genres: ['Documentary'],
+  },
+  {
+    id: 11,
+    title: 'Show People',
+    release: 2008,
+    cover: '/assets/coming_soon.png',
+    genres: ['Comedy'],
+  },
+  {
+    id: 12,
+    title: 'Let the Right One In (Låt den rätte komma in)',
+    release: 2001,
+    cover: '/assets/coming_soon.png',
+    genres: ['Horror'],
+  },
+];

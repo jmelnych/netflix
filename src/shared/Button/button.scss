@@ -1,0 +1,35 @@
+@import "../../scss/variables";
+
+.button {
+  min-width: 160px;
+  margin: 0 10px;
+  padding: 15px 30px;
+  min-height: 50px;
+  font-size: 1.2em;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 4px;
+  transition: 0.5s;
+  cursor: pointer;
+  outline: none;
+
+  &--primary {
+    background: $brand;
+    color: $white;
+
+    &:hover {
+      background: $brand-hover;
+    }
+  }
+
+  &--glassy {
+    background: rgba(255, 255, 255, 0.3);
+    color: $brand;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.4);
+    }
+  }
+}

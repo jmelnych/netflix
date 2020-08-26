@@ -4,7 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     mode: 'development',
-    entry: ['./src/index.js'],
+    entry: ['./src/index.tsx'],
     output: {
         path: path.resolve(__dirname, 'build'),
         filename: '[name].bundle.js',
@@ -17,7 +17,7 @@ module.exports = {
         new CopyWebpackPlugin({
             patterns: [
             { from: 'public', to: './' },
-            { from: 'src/media', to: './media' },
+            { from: 'src/assets', to: './assets' },
         ]
         }),
     ],

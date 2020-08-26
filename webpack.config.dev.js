@@ -3,18 +3,18 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     mode: 'development',
-    entry: ['./src/index.js'],
+    entry: ['./src/index.tsx'],
 
     output: {
         filename: 'bundle.js',
     },
     resolve: {
-        extensions: ['.js', '.jsx']
+        extensions: ['.ts', '.tsx', '.js', '.jsx', '.json']
     },
     watch: true,
     devtool: 'source-map',
     devServer: {
-        contentBase: path.join(__dirname, 'dev'),
+        contentBase: [__dirname + '/public'],
         compress: true,
         port: 5000,
         open: true
@@ -29,11 +29,14 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.m?js$/,
-                exclude: /(node_modules)/,
-                use: {
-                    loader: 'babel-loader',
-                },
+                test : /\.tsx?$/,
+                exclude : [/node_modules/, /outputFiles/],
+                loader: "ts-loader",
+            },
+            {
+                enforce: "pre",
+                test: /\.js$/,
+                loader: "source-map-loader",
             },
             {
                 test: /\.(s?)css$/,

@@ -1,0 +1,19 @@
+@import "src/scss/variables";
+
+.header {
+  background-size: cover;
+  height: 420px;
+  color: $white;
+  background-image: linear-gradient(to top,rgba(0,0,0,0) 1%,rgba(0,0,0,.9) 100%),
+  url("../../../public/assets/website_bg.jpg");
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+
+  &__panel {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.2rem 0;
+  }
+}
