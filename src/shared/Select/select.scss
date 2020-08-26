@@ -1,0 +1,47 @@
+@import "../../scss/variables";
+
+.select {
+  display: flex;
+  align-items: center;
+  padding: 5px 5px 15px;
+
+  &__label {
+    color: $basic-light;
+    font-weight: 600;
+  }
+
+  &__wrapper {
+    position: relative;
+    cursor: pointer;
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 8px solid $brand;
+  }
+
+  select {
+    min-width: 160px;
+    margin-left: 2rem;
+    background: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1em;
+    text-transform: uppercase;
+    color: $white;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    -webkit-appearance: none;
+  }
+
+  option {
+    background: $basic;
+    border: none;
+  }
+}

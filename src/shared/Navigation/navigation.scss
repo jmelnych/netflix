@@ -1,0 +1,22 @@
+@import "../../scss/variables";
+
+.nav {
+  display: flex;
+  position: relative;
+  top: 3px;
+
+  &__item {
+    margin-right: 1.5rem;
+    padding: 5px 5px 15px;
+    cursor: pointer;
+
+    &--active {
+      border-bottom: 3px solid $brand;
+    }
+
+    &:hover {
+      color: $brand;
+      transition: 0.5s;
+    }
+  }
+}
