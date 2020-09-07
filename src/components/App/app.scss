@@ -1,4 +1,5 @@
 @import '/node_modules/reset-css/reset.css';
+@import "src/scss/variables";
 
 body {
     margin: 0;
@@ -13,3 +14,6 @@ body {
     padding: 2rem 3rem;
 }
 
+.icon {
+    color: $brand;
+}

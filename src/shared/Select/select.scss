@@ -1,24 +1,18 @@
 @import "../../scss/variables";
 
 .select {
-  display: flex;
-  align-items: center;
-  padding: 5px 5px 15px;
-
-  &__label {
-    color: $basic-light;
-    font-weight: 600;
-  }
 
   &__wrapper {
     position: relative;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: 100%;
   }
 
   &__arrow {
-    position: absolute;
-    top: 5px;
-    right: 5px;
+    position: relative;
+    left: -5%;
     width: 0;
     height: 0;
     border-left: 5px solid transparent;
@@ -27,8 +21,12 @@
   }
 
   select {
-    min-width: 160px;
-    margin-left: 2rem;
+    width: 100%;
+    min-width: 100%;
+    min-height: 50px;
+    border-radius: 4px;
+    padding: 5px 15px;
+    box-sizing: border-box;
     background: none;
     font-family: 'Montserrat', sans-serif;
     font-size: 1em;
@@ -43,5 +41,13 @@
   option {
     background: $basic;
     border: none;
+  }
+}
+
+.modal {
+
+  select {
+    background: rgba($basic-bright, 0.5);
+    color: $white;
   }
 }

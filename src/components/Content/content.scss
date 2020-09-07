@@ -4,6 +4,22 @@
   background-color: $basic;
   color: $white;
 
+  &__sort {
+    display: flex;
+    align-items: center;
+    position: relative;
+    left: -40px;
+    min-width: 250px;
+
+    label {
+      white-space: nowrap;
+    }
+
+    select {
+      margin-left: 2rem;
+    }
+  }
+
   &__panel {
     @media (max-width: 960px) {
       font-size: 0.8em;
@@ -23,5 +39,12 @@
 
   &__number {
     font-weight: 600;
+  }
+
+  &__sort {
+    label {
+      color: $basic-light;
+      font-weight: 600;
+    }
   }
 }
