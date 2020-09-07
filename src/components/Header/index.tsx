@@ -1,7 +1,6 @@
 import React from 'react';
 import Search from '../Search';
 import Button from '../../shared/Button';
-import './header.scss';
 import Logo from '../../shared/Logo';
 import { appModals } from '../Content';
 

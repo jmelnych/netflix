@@ -1,0 +1,33 @@
+@import "src/scss/variables";
+
+.popover {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  background: $basic;
+  outline: none;
+
+  &__gist {
+    flex-direction: column;
+    justify-content: center;
+    background: $basic;
+    max-height: 300px;
+    border-radius: 4px;
+    display: flex;
+  }
+
+  &__close {
+    position: relative;
+    top: 7px;
+    align-self: flex-end;
+    transform: rotate(45deg);
+    width: 25px;
+    height: 25px;
+    font-size: 1.5em;
+    cursor: pointer;
+    outline: none;
+  }
+}

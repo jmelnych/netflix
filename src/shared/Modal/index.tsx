@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import './modal.scss';
 
 interface ModalProps {
     title?: string,
-    children: any,
+    children: ReactNode,
     closeModal: any,
     type?: 'popover' | 'modal'
 }
@@ -23,7 +23,7 @@ const Modal = ({
           <span role="button" tabIndex={0} className="close" onClick={closeModal}>+</span>
           <div className="content">
             {title && <div className="title">{title}</div>}
-                {...children}
+            {children}
           </div>
         </div>
       </div>

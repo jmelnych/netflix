@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import './footer.scss';
 
 interface FooterProps {
-    children: any,
+    children: ReactNode,
 }
 
 const Footer = ({ children }: FooterProps) => (
   <footer className="footer">
-        {...children}
+    {children}
   </footer>
 );
 
