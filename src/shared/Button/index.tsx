@@ -1,16 +1,19 @@
 import React from 'react';
 import './button.scss';
 
-type ButtonProps = {
+interface ButtonProps {
     type: 'submit' | 'reset',
     additionalClass?: string,
     children: any,
     color: 'primary' | 'glassy',
+    click?: any
 }
 const Button = ({
-  type, color, additionalClass, children,
+  type, color, additionalClass, children, click,
 }: ButtonProps) => (
-  // eslint-disable-next-line react/button-has-type
-  <button type={type} className={`button button--${color} ${additionalClass}`}>{children}</button>);
+  <button type={type} onClick={click} className={`button button--${color} ${additionalClass}`}>
+    {children}
+  </button>
+);
 
 export default Button;

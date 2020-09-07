@@ -1,6 +1,20 @@
-input {
-  min-height: 40px;
+@import "src/scss/variables";
+
+.input-container {
+  position: relative;
   width: 100%;
+
+  .icon {
+    position: absolute;
+    right: 4%;
+    top: 50px;
+  }
+}
+
+input {
+  min-height: 50px;
+  width: 100%;
+  box-sizing: border-box;
   padding: 5px 15px;
   background-color: rgba(0, 0, 0, 0.7);
   border: none;
@@ -8,4 +22,27 @@ input {
   letter-spacing: 0.5px;
   border-radius: 4px;
   outline: none;
+}
+
+
+.modal {
+
+  .label {
+    display: block;
+    margin: 1rem 0;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: $brand;
+    text-transform: uppercase;
+  }
+
+  .input {
+    background: rgba($basic-bright, 0.5);
+    color: $white;
+
+    &--readonly {
+      padding: 0;
+      background: transparent;
+    }
+  }
 }

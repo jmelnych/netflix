@@ -1,19 +1,21 @@
 import React from 'react';
 import './select.scss';
 
-type SelectProps = {
-    items: string[],
+interface SelectProps {
+    options: string[],
+    label?: string,
+    additionalClass?: string,
 }
-const Sort = ({ items }: SelectProps) => (
-  <div className="select">
-    <span className="select__label">Sort by</span>
+const Select = ({ options, label, additionalClass }: SelectProps) => (
+  <div className={`select ${additionalClass}`}>
+    <label className="label">{label}</label>
     <div className="select__wrapper">
       <select name="select">
-        {items.map((item) => <option key={item} value={item}>{item}</option>)}
+        {options.map((item) => <option key={item} value={item}>{item}</option>)}
       </select>
       <span className="select__arrow" />
     </div>
   </div>
 );
 
-export default Sort;
+export default Select;

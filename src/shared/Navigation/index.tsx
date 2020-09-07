@@ -1,9 +1,9 @@
 import React from 'react';
 import './navigation.scss';
 
-type NavigationProps = {
+interface NavigationProps {
     items: string[],
-};
+}
 
 const activeItem = 0;
 

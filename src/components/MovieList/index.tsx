@@ -1,14 +1,17 @@
 import React from 'react';
-import MovieItem from '../MovieItem';
+import MovieCard from '../MovieCard';
+import { movies } from '../Content/mock';
+import MovieModel from '../../models/Movie.model';
 
-type MovieListProps = {
-    movies: any[],
-};
+interface MovieListProps {
+    openModal: (modalName:string, id: number) => void,
+}
 
-const MovieList = ({ movies }: MovieListProps) => (
-  <ul className="movie">
-    {movies.map((movie) => (
-      <MovieItem
+const MovieList = ({ openModal }: MovieListProps) => (
+  <ul className="movies">
+    {movies.map((movie:MovieModel) => (
+      <MovieCard
+        openModal={openModal}
         key={movie.id}
         movie={movie}
       />
