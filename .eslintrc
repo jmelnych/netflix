@@ -8,6 +8,8 @@
   "plugins": ["@typescript-eslint"],
   "parser": "@typescript-eslint/parser",
   "rules": {
+    "no-plusplus": 0,
+    "max-len":  ["error", { "code": 120, "tabWidth": 4 }],
     "@typescript-eslint/no-unused-vars": [2, { "args": "none" }],
     "import/no-unresolved": 0,
     "import/extensions": [0, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],

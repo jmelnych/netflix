@@ -12,9 +12,9 @@ import MovieItem from '../MovieItem';
 import { useDocumentTitle } from '../../shared/useDocumentTitle';
 
 export enum appModals {
-  modalEditMovie = 'modalEditMovie',
-  modalDeleteMovie = 'modalDeleteMovie',
-  modalAddMovie = 'modalAddMovie',
+  editMovie = 'editMovie',
+  deleteMovie = 'deleteMovie',
+  addMovie = 'addMovie',
 }
 
 const Content = () => {
@@ -23,7 +23,7 @@ const Content = () => {
   const [movieDetail, setMovieDetail] = useState(null);
   const [movieDetailId, setMovieDetailId] = useState(-1);
 
-  const title = movieDetail && movieDetail.title || '';
+  const title = movieDetail && movieDetail.title || 'Netflix';
   useDocumentTitle(title);
 
   const selectedMovie = useCallback(() => movies.find((movie) => movie.id === movieDetailId),
@@ -34,23 +34,23 @@ const Content = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [movieDetailId]);
 
-  const openModal = (modalName:string, id?:number) => {
+  const openModal = useCallback((modalName:string, id?:number) => {
     setActiveModal(modalName);
     setMovieIdModal(id);
-  };
+  }, []);
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     setActiveModal(null);
     setMovieIdModal(null);
-  };
+  }, []);
 
   const openActiveModal = (active:string) => {
     switch (active) {
-      case appModals.modalAddMovie:
+      case appModals.addMovie:
         return (<AddForm closeModal={closeModal} />);
-      case appModals.modalEditMovie:
+      case appModals.editMovie:
         return (<EditForm movieId={movieIdModal} closeModal={closeModal} />);
-      case appModals.modalDeleteMovie:
+      case appModals.deleteMovie:
         return (<DeleteForm movieId={movieIdModal} closeModal={closeModal} />);
       default:
         return (<></>);

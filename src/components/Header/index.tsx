@@ -10,7 +10,7 @@ interface HeaderProps {
 
 const Header = ({ openModal }:HeaderProps) => {
   const openAddModal = () => {
-    openModal(appModals.modalAddMovie);
+    openModal(appModals.addMovie);
   };
 
   return (

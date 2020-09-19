@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback } from 'react';
 import './movie.scss';
 import Popover from '../../shared/Popover';
 import MovieModel from '../../models/Movie.model';
@@ -11,32 +11,30 @@ interface MovieItemProps {
 }
 
 const MovieCard = ({ movie, openModal, selectedMovie }: MovieItemProps) => {
-  const [showPopover, togglePopover] = useState(false);
+  const showModal = useCallback((evt: any) => {
+    const modalName = evt.target.getAttribute('modal-name');
+    openModal(modalName, movie.id);
+  }, []);
 
-  const showModal = (modalName?:string, id?:number) => {
-    if (modalName && id) {
-      openModal(modalName, id);
-    }
-    togglePopover((isShown) => !isShown);
+  const selectMovie = () => {
+    selectedMovie(movie.id);
   };
 
   return (
     <li className="movie__card">
       <img className="movie__img" src={movie.posterPath} alt={movie.title} />
-      <div role="button" tabIndex={0} className="movie__button" onClick={() => togglePopover(true)}>...</div>
-
-      <Popover isOpened={showPopover} close={togglePopover}>
-        <ul className="popover__list">
-          <li className="popover__item" onClick={() => showModal(appModals.modalEditMovie, movie.id)}>
+      <Popover>
+        <ul className="popover__list" key={`popover-${movie.id}`}>
+          <li className="popover__item" modal-name={appModals.editMovie} onClick={showModal}>
             Edit
           </li>
-          <li className="popover__item" onClick={() => showModal(appModals.modalDeleteMovie, movie.id)}>
+          <li className="popover__item" modal-name={appModals.deleteMovie} onClick={showModal}>
             Delete
           </li>
         </ul>
       </Popover>
 
-      <div role="button" tabIndex={0} className="movie__info" onClick={() => selectedMovie(movie.id)}>
+      <div role="button" tabIndex={0} className="movie__info" onClick={selectMovie}>
         <h3 className="movie__title">{movie.title}</h3>
         <span className="movie__release">{movie.releaseDate}</span>
         <p className="movie__genre">{movie.genres.join(', ')}</p>

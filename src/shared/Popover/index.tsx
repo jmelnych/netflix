@@ -1,23 +1,36 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState, useRef } from 'react';
 import './popover.scss';
+import useOutsideClick from '../useOutsideClick';
 
 interface PopoverProps {
-    isOpened: boolean,
-    close: Function,
     children: ReactNode,
 }
 
-const Popover = ({ isOpened, close, children }: PopoverProps) => (
-  isOpened && (
-  <div className="popover">
-    <div className="popover__gist">
-      <span role="button" tabIndex={0} className="popover__close" onClick={() => close(false)}>+</span>
-      <div className="content">
-        {children}
-      </div>
-    </div>
-  </div>
-  )
-);
+const Popover = ({ children }: PopoverProps) => {
+  const [isOpen, setIsOpen] = useState(false);
 
-export default Popover;
+  const toggle = () => setIsOpen(!isOpen);
+
+  const wrapperRef = useRef(null);
+  useOutsideClick(wrapperRef, () => setIsOpen(false));
+
+  return (
+    <>
+      <div role="button" tabIndex={0} className="movie__button" onClick={toggle}>...</div>
+      {isOpen && (
+        <div ref={wrapperRef} className="popover">
+          <div className="popover__gist">
+            <span role="button" tabIndex={0} className="popover__close" onClick={toggle}>+</span>
+            <div className="content">
+              {children}
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
+
+const areEqual = (prevProps: any, nextProps: any) => prevProps.children.key === nextProps.children.key;
+
+export default React.memo(Popover, areEqual);
