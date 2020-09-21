@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, ReactNode } from 'react';
 
 interface ErrorBoundaryProps {
-    children: any
+    children: ReactNode
 }
 
 class ErrorBoundary extends Component<ErrorBoundaryProps> {

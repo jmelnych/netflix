@@ -2,8 +2,8 @@
   "compilerOptions": {
     "outDir": "./dist/",
     "noImplicitAny": true,
-    "module": "es6",
-    "moduleResolution": "node", //allows import index.tsx
+    "module": "esnext",
+    "moduleResolution": "node", //allows import index.ts
     "target": "es5",
     "jsx": "react",
     "allowJs": true,

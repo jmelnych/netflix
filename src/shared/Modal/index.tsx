@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import './modal.scss';
 
 interface ModalProps {
     title?: string,
-    children: any,
+    children: ReactNode,
     closeModal: any,
     type?: 'popover' | 'modal'
 }
@@ -19,11 +19,11 @@ const Modal = ({
   return (
     <form onSubmit={handleSubmit}>
       <div className={type}>
-        <div className="gist">
+        <div className="modal__gist">
           <span role="button" tabIndex={0} className="close" onClick={closeModal}>+</span>
-          <div className="content">
-            {title && <div className="title">{title}</div>}
-                {...children}
+          <div className="modal__content">
+            {title && <div className="modal__title">{title}</div>}
+            {children}
           </div>
         </div>
       </div>
@@ -32,4 +32,3 @@ const Modal = ({
 };
 
 export default Modal;
-// <div className="window" role="tooltip" tabIndex={0} onBlur={toggle}>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import './content.scss';
 import { movies, genres, sortOptions } from './mock';
 import Navigation from '../../shared/Navigation';
@@ -8,80 +8,77 @@ import Header from '../Header';
 import DeleteForm from '../DeleteForm';
 import EditForm from '../EditForm';
 import AddForm from '../AddForm';
+import MovieItem from '../MovieItem';
+import { useDocumentTitle } from '../../shared/useDocumentTitle';
 
 export enum appModals {
-  modalEditMovie = 'modalEditMovie',
-  modalDeleteMovie = 'modalDeleteMovie',
-  modalAddMovie = 'modalAddMovie',
+  editMovie = 'editMovie',
+  deleteMovie = 'deleteMovie',
+  addMovie = 'addMovie',
 }
 
-interface ContentProps {
-}
+const Content = () => {
+  const [activeModal, setActiveModal] = useState('');
+  const [movieIdModal, setMovieIdModal] = useState(-1);
+  const [movieDetail, setMovieDetail] = useState(null);
+  const [movieDetailId, setMovieDetailId] = useState(-1);
 
-interface ContentState {
-  activeModal: string,
-  movieId: number,
-}
+  const title = movieDetail && movieDetail.title || 'Netflix';
+  useDocumentTitle(title);
 
-class Content extends React.Component<ContentProps, ContentState> {
-  state = {
-    activeModal: '',
-    movieId: -1,
-  };
+  const selectedMovie = useCallback(() => movies.find((movie) => movie.id === movieDetailId),
+    [movieDetailId]);
 
-  openModal = (modalName:string, id?:number) => {
-    this.setState(() => ({
-      activeModal: modalName,
-      movieId: id,
-    }));
-  }
+  useEffect(() => {
+    setMovieDetail(selectedMovie);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [movieDetailId]);
 
-  closeModal = () => {
-    this.setState(() => ({
-      activeModal: null,
-      movieId: null,
-    }));
-  }
+  const openModal = useCallback((modalName:string, id?:number) => {
+    setActiveModal(modalName);
+    setMovieIdModal(id);
+  }, []);
 
-  openActiveModal = (active:string) => {
-    const { movieId } = this.state;
+  const closeModal = useCallback(() => {
+    setActiveModal(null);
+    setMovieIdModal(null);
+  }, []);
+
+  const openActiveModal = (active:string) => {
     switch (active) {
-      case appModals.modalAddMovie:
-        return (<AddForm closeModal={this.closeModal} />);
-      case appModals.modalEditMovie:
-        return (<EditForm movieId={movieId} closeModal={this.closeModal} />);
-      case appModals.modalDeleteMovie:
-        return (<DeleteForm movieId={movieId} closeModal={this.closeModal} />);
+      case appModals.addMovie:
+        return (<AddForm closeModal={closeModal} />);
+      case appModals.editMovie:
+        return (<EditForm movieId={movieIdModal} closeModal={closeModal} />);
+      case appModals.deleteMovie:
+        return (<DeleteForm movieId={movieIdModal} closeModal={closeModal} />);
       default:
         return (<></>);
     }
-  }
+  };
 
-  render() {
-    const { activeModal } = this.state;
-    return (
-      <>
-        <Header openModal={this.openModal} />
-        <main className="content">
-          <div className="wrapper">
-            <div className="content__panel">
-              <Navigation items={['all', ...genres]} />
-              <Select additionalClass="content__sort" label="Sort by" options={sortOptions} />
-            </div>
-            <div className="content__total">
-              <span className="content__number">
-                {movies.length}
-                {' '}
-              </span>
-              movies found
-            </div>
-            <MovieList openModal={this.openModal} />
-            {this.openActiveModal(activeModal)}
+  return (
+    <>
+      { movieDetail ? <MovieItem movie={movieDetail} /> : <Header openModal={openModal} />}
+      <main className="content">
+        <div className="wrapper">
+          <section className="content__panel">
+            <Navigation items={['all', ...genres]} />
+            <Select additionalClass="content__sort" label="Sort by" options={sortOptions} />
+          </section>
+          <div className="content__total">
+            <span className="content__number">
+              {movies.length}
+              {' '}
+            </span>
+            movies found
           </div>
-        </main>
-      </>
-    );
-  }
-}
+          <MovieList selectedMovie={setMovieDetailId} openModal={openModal} />
+          {openActiveModal(activeModal)}
+        </div>
+      </main>
+    </>
+  );
+};
 
 export default Content;

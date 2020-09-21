@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import './button.scss';
 
 interface ButtonProps {
     type: 'submit' | 'reset',
     additionalClass?: string,
-    children: any,
+    children: ReactNode,
     color: 'primary' | 'glassy',
     click?: any
 }
