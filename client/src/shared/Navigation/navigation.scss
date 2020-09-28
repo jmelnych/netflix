@@ -1,0 +1,30 @@
+@import "../../scss/variables";
+
+.nav {
+  display: flex;
+  align-items: center;
+  position: relative;
+  max-width: 755px;
+  overflow-x: auto;
+  top: 23px;
+  -webkit-overflow-scrolling: touch;
+
+  &__item {
+    margin-right: 1.5rem;
+    padding: 5px 5px 15px;
+    cursor: pointer;
+
+    &--active {
+      border-bottom: 3px solid $brand;
+    }
+
+    &:hover {
+      color: $brand;
+      transition: 0.5s;
+    }
+  }
+}
+
+::-webkit-scrollbar {
+  border: none;
+}
